@@ -23,4 +23,4 @@ An enterprise-grade AI agent powered by CrewAI and Google Gemini 2.0 Flash to au
     streamlit run src/app.py
     ```
 
-    > **Tip:** Use the **"Load Bad Example"** button in the UI for a quick demonstration of security violations and coaching feedback.
+    > **Tip:** Use the **'Load Bad Example'** button in the UI for a quick demonstration of security violations without manual copy-pasting.
