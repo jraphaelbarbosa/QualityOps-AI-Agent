@@ -1,0 +1,15 @@
+crewai
+langchain
+chromadb
+pydantic
+google-generativeai
+sentence-transformers
+langchain-huggingface
+langchain-chroma
+langchain-community
+
+crewai-tools
+langchain-google-genai
+python-dotenv
+
+streamlit

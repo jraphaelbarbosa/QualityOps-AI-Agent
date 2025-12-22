@@ -1,0 +1,17 @@
+[
+  {
+    "id": "chat_001",
+    "description": "Perfect Case",
+    "audio_transcription": "Customer: Hi, I have an issue with my bill. Agent: I can help with that. First, could you please confirm your Account PIN? Customer: Sure, it's 1234. Agent: PIN verified. What seems to be the issue? Customer: I was overcharged. Agent: I apologize for the inconvenience. Let me check... I see the error and have refunded $10. Customer: Thanks."
+  },
+  {
+    "id": "chat_002",
+    "description": "Security Failure",
+    "audio_transcription": "Customer: Hi, I need to check my last bill. Agent: Okay, I see your bill is $50. Customer: Why is it so high? Agent: It includes a late fee."
+  },
+  {
+    "id": "chat_003",
+    "description": "Compliance Failure",
+    "audio_transcription": "Customer: Why is my internet so slow? I'm really angry! Agent: I don't know. It works fine for everyone else."
+  }
+]
