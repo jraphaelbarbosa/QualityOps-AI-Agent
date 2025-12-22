@@ -8,19 +8,11 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Try importing the backend function
 try:
-    from src.main import run_single_audit
+    from src.langchain_backend import run_audit_chain
 except ImportError:
-    # Fallback mock for testing if backend isn't ready
-    def run_single_audit(text):
-        import time
-        time.sleep(1)
-        return {
-            "score": 0,
-            "security_violation": True,
-            "violations": ["Connection Error: Could not reach Agent Backend."],
-            "coaching_feedback": "Please check your API Key and backend logs.",
-            "corrected_response": "System Error"
-        }
+    # Fallback mock
+    def run_audit_chain(text):
+        return {"score": 0, "violations": ["Backend Module Not Found"], "security_violation": True, "corrected_response": "N/A", "coaching_feedback": "Check setup."}
 
 # Page Configuration
 st.set_page_config(
@@ -32,17 +24,18 @@ st.set_page_config(
 
 # Sidebar
 with st.sidebar:
+    st.image("https://placehold.co/200x80?text=QualityOps", use_column_width=True)
     st.title("🛡️ QualityOps")
     st.info(
         """
         **System Architecture:**
-        * 🤖 **Orchestration:** CrewAI
+        * ⚡ **Orchestration:** LangChain LCEL
         * 🧠 **LLM:** Gemini 2.5 Flash
-        * 📚 **RAG:** ChromaDB (Local)
+        * 🔍 **Parser:** JsonOutputParser
         """
     )
     st.markdown("---")
-    st.caption("Enterprise Edition v1.0")
+    st.caption("Enterprise Edition v2.0")
 
 # Main Content
 st.title("Intelligent QA & Compliance Agent")
@@ -53,7 +46,6 @@ st.divider()
 # 4. Input Area (Columns)
 col_input, col_actions = st.columns([3, 1])
 
-# initialize session state if not present
 # initialize session state if not present
 if 'chat_input' not in st.session_state:
     st.session_state['chat_input'] = ""
@@ -85,6 +77,11 @@ with col_actions:
     st.write("")
     run_btn = st.button("▶️ Run Audit", type="primary", use_container_width=True)
 
+# Helper to cache input/output
+@st.cache_data(show_spinner=False)
+def cached_audit(text):
+    return run_audit_chain(text)
+
 # 5. Execution & Dashboard
 if run_btn:
     # Use the session state value for the audit
@@ -93,9 +90,9 @@ if run_btn:
     if not final_input or len(final_input) < 10:
         st.warning("⚠️ Please enter a valid chat log (min 10 chars).")
     else:
-        with st.spinner("🤖 Agents are analyzing protocols..."):
+        with st.spinner("🤖 LangChain Agents are analyzing protocols..."):
             try:
-                result = run_single_audit(final_input)
+                result = cached_audit(final_input)
 
                 st.divider()
                 m1, m2, m3 = st.columns(3)

@@ -1,15 +1,12 @@
-crewai
 langchain
 chromadb
-pydantic
-google-generativeai
+pydantic>=2.0.0
 sentence-transformers
 langchain-huggingface
 langchain-chroma
 langchain-community
 
-crewai-tools
-langchain-google-genai
+langchain-google-genai>=1.0.3
 python-dotenv
 
 streamlit
