@@ -24,7 +24,7 @@ st.set_page_config(
 
 # Sidebar
 with st.sidebar:
-    st.image("https://placehold.co/200x80?text=QualityOps", use_column_width=True)
+    st.image("https://placehold.co/200x80?text=QualityOps", use_container_width=True)
     st.title("🛡️ QualityOps")
     st.info(
         """
