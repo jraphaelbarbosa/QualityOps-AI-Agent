@@ -1,18 +1,18 @@
 
-import streamlit as st
 import sys
 import os
+# Fix path to ensure imports work in Streamlit Cloud
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_dir)
 
-# Fix path to find modules
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-# Try importing the backend function
+import streamlit as st
+# Now import the backend safely
 try:
-    from src.langchain_backend import run_audit_chain
-except ImportError:
-    # Fallback mock
-    def run_audit_chain(text):
-        return {"score": 0, "violations": ["Backend Module Not Found"], "security_violation": True, "corrected_response": "N/A", "coaching_feedback": "Check setup."}
+    import langchain_backend as backend
+    run_audit_chain = backend.run_audit_chain
+except ImportError as e:
+    st.error(f"Critical System Error: {e}")
+    st.stop()
 
 # Page Configuration
 st.set_page_config(
