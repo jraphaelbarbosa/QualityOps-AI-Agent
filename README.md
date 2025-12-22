@@ -67,7 +67,14 @@
 
 ## 📸 Screenshots
 
-*(Add your screenshots here)*
+### Dashboard Home
+![Dashboard](assets/dashboard_main.png)
+
+### Real-Time Audit Result
+![Audit Result](assets/audit_result.png)
+
+### Deep Violation Analysis
+![Violations](assets/violations_detail.png)
 
 ---
 
