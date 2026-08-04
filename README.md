@@ -1,5 +1,7 @@
 # QualityOps AI - Enterprise Compliance Auditor 🛡️
 
+> **[ 🇧🇷 Ler em Português ](README.pt-br.md)**
+
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![LangChain](https://img.shields.io/badge/LangChain-LCEL-orange)
 ![Gemini](https://img.shields.io/badge/AI-Gemini%202.5%20Flash-magenta)
