@@ -2,10 +2,13 @@
 ARCHITECTURE NOTE: Prototype configuration using LiteLLM/Gemini. 
 For Production (AWS), switch to BedrockChat and ensure IAM Roles are configured for bedrock:InvokeModel permissions.
 """
-from crewai import Agent, Task, Crew, Process
-from src.agents.tools import RulesSearchTool
-from src.agents.schemas import ComplianceResult
 import os
+
+from crewai import Agent, Crew, Process, Task
+
+from src.agents.schemas import ComplianceResult
+from src.agents.tools import RulesSearchTool
+
 
 def validate_gemini_key():
     """Validate that GEMINI_API_KEY is set in environment"""

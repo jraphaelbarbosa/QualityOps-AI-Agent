@@ -1,9 +1,9 @@
-import sys
-import os
-import signal
 import json
+import os
 import re
-import ast # Added for safe python string parsing
+import signal
+import sys
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -90,7 +90,7 @@ def clean_and_parse_json(raw_output):
         }
 
     except Exception as e:
-        print(f"❌ PARSING FAILED: {str(e)}")
+        print(f"❌ PARSING FAILED: {e!s}")
         return None
 
 def run_audit():
@@ -122,7 +122,7 @@ def run_single_audit(chat_text: str) -> dict:
             }
                 
     except Exception as e:
-        print(f"🔴 CRITICAL ERROR IN MAIN: {str(e)}")
+        print(f"🔴 CRITICAL ERROR IN MAIN: {e!s}")
         error_str = str(e)
         
         # Friendly error for API Key issues
@@ -138,7 +138,7 @@ def run_single_audit(chat_text: str) -> dict:
         return {
             "score": 0,
             "security_violation": True,
-            "violations": [f"System Exception: {str(e)}"],
+            "violations": [f"System Exception: {e!s}"],
             "coaching_feedback": "Contact Technical Support.",
             "corrected_response": "N/A"
         }

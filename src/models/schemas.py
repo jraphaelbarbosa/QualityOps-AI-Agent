@@ -3,8 +3,9 @@ Data contracts and schema definitions for QualityOps AI audit pipelines.
 Enforces validation and serialization using Pydantic v2.
 """
 
-from typing import Literal
 from datetime import datetime, timezone
+from typing import Literal
+
 from pydantic import BaseModel, Field, field_validator
 
 

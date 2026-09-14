@@ -3,16 +3,16 @@ Enterprise compliance audit engine utilizing LangChain LCEL and Google Gemini.
 Executes deterministic PII guardrails followed by structured LLM evaluation.
 """
 
-import os
-import json
 import logging
-from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain_core.prompts import PromptTemplate
-from langchain_core.output_parsers import JsonOutputParser
+import os
 
-from src.models.schemas import AuditReport, AuditRequest
+from dotenv import load_dotenv
+from langchain_core.output_parsers import JsonOutputParser
+from langchain_core.prompts import PromptTemplate
+from langchain_google_genai import ChatGoogleGenerativeAI
+
 from src.guardrails.pii_sanitizer import sanitize_text_and_extract_violations
+from src.models.schemas import AuditReport, AuditRequest
 
 load_dotenv()
 logger = logging.getLogger("qualityops.audit_engine")
@@ -110,12 +110,12 @@ def execute_compliance_audit(request: AuditRequest) -> AuditReport:
         return report
 
     except Exception as exc:
-        logger.error(f"Audit pipeline execution failed: {str(exc)}", exc_info=True)
+        logger.error(f"Audit pipeline execution failed: {exc!s}", exc_info=True)
         return AuditReport(
             score=0,
             security_violation=True,
             pii_detected=detected_pii,
-            violations=[f"Inference pipeline failure: {str(exc)}"],
+            violations=[f"Inference pipeline failure: {exc!s}"],
             coaching_feedback="The audit pipeline encountered an execution error. Please retry.",
             corrected_response="N/A",
             eval_metric_pass=False

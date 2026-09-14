@@ -2,7 +2,6 @@
 Unit tests for deterministic PII guardrails.
 """
 
-import pytest
 from src.guardrails.pii_sanitizer import sanitize_text_and_extract_violations
 
 

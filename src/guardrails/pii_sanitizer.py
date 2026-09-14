@@ -4,8 +4,8 @@ Intercepts and redacts sensitive data (CPF, Credit Card, Email, Phone) prior to 
 """
 
 import re
-from src.models.schemas import PIIViolation
 
+from src.models.schemas import PIIViolation
 
 # High-precision regex patterns for sensitive data
 CPF_PATTERN = re.compile(r"\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b")

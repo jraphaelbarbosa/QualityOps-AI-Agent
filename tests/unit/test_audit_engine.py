@@ -2,10 +2,11 @@
 Unit tests for audit engine orchestration and Pydantic data contracts.
 """
 
-import pytest
 from unittest.mock import patch
-from src.models.schemas import AuditReport, AuditRequest
+
+import pytest
 from src.langchain_backend import execute_compliance_audit
+from src.models.schemas import AuditReport
 
 
 def test_audit_report_schema_validation():

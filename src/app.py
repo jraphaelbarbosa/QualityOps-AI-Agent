@@ -1,11 +1,13 @@
 
-import sys
 import os
+import sys
+
 # Fix path to ensure imports work in Streamlit Cloud
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
 
 import streamlit as st
+
 # Now import the backend safely
 try:
     import langchain_backend as backend
@@ -112,4 +114,4 @@ if run_btn:
                     st.code(result.get('corrected_response'))
 
             except Exception as e:
-                st.error(f"Error: {str(e)}")
+                st.error(f"Error: {e!s}")

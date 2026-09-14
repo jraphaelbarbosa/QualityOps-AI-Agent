@@ -1,6 +1,8 @@
+
 from crewai.tools import BaseTool
+
 from src.rag.retriever import query_knowledge_base
-from typing import ClassVar
+
 
 class RulesSearchTool(BaseTool):
     name: str = "Rules Search Tool"

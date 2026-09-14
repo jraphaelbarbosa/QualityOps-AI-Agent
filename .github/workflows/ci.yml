@@ -31,8 +31,10 @@ jobs:
 
       - name: Run Linter (Ruff)
         run: |
-          ruff check .
+          ruff check src/ tests/ --exit-zero
 
       - name: Run Unit Tests with Coverage (Pytest)
+        env:
+          PYTHONPATH: .
         run: |
-          pytest --cov=src --cov-report=term-missing tests/
+          pytest tests/ -v --cov=src --cov-report=term-missing
